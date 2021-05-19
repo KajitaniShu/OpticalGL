@@ -17,27 +17,29 @@ class World{
         this.context        = canvas.getContext('2d');
         this.count          = 0;
         this.clock          = new THREE.Clock();
-        
+        this.opticalEleents = new THREE.Group();
 
-        this.laser          = new Laser(this.socket, this.scene);
-        this.lens           = new Lens(this.socket, this.scene);
-        this.mirror         = new Mirror(this.socket, this.scene);
-        this.screen         = new Screen(this.socket, this.scene);
+        this.laser          = new Laser(this.socket, this.scene, this.opticalEleents, false);
+        this.lens           = new Lens(this.socket, this.scene, this.opticalEleents, false);
+        this.mirror         = new Mirror(this.socket, this.scene, this.opticalEleents, false);
+        this.screen         = new Screen(this.socket, this.scene, this.opticalEleents, false);
 
-        this.laser1          = new Laser(this.socket, this.scene);
-        this.lens1           = new Lens(this.socket, this.scene);
-        this.mirror1         = new Mirror(this.socket, this.scene);
-        this.screen1         = new Screen(this.socket, this.scene);
+        this.laser1          = new Laser(this.socket, this.scene, this.opticalEleents, true);
+        this.lens1           = new Lens(this.socket, this.scene, this.opticalEleents, true);
+        this.mirror1         = new Mirror(this.socket, this.scene, this.opticalEleents, true);
+        this.screen1         = new Screen(this.socket,this.scene, this.opticalEleents, true);
 
         this.laser1.setPosition(20, 130);
         this.laser1.setRotation(Math.PI / 2);
-        this.lens1.setPosition(22, 100);
+        this.lens1.setPosition(20, 100);
         this.mirror1.setPosition(20, 70);
         this.screen1.setPosition(-40, 70);
 
 
         this.board2D    = new Board2D(this.scene);
-
+        this.opticalEleents.scale.set(4, 4, 4);
+        this.opticalEleents.position.set(40, 8, 400);
+        this.scene.add(this.opticalEleents);
 
         resize( this.camera, this.camera2D, this.renderer, this.is2D);
         

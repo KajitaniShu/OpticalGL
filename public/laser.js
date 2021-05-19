@@ -4,10 +4,12 @@
 // → レーザーを作成し、管理する                               // 
 //********************************************************//
 class Laser{
-    constructor(socket, scene){
+    constructor(socket, scene, group, elm){
         this.socket  = socket;
         this.id      = new Date().getTime().toString(16)  + Math.floor(Math.random()).toString(16);
         this.scene   = scene;
+        this.group   = group;
+        this.elm     = elm;
         this.image2D =  new THREE.MeshBasicMaterial({
             map: new THREE.TextureLoader().load('./public/img/lazer.png'),
             color:0xFFFFFF,
@@ -26,8 +28,9 @@ class Laser{
         this.sprite.position.set(this.x, this.y, this.z);
         this.sprite.scale.set(3, 3, 3);
         this.sprite.rotation.z = 0;
-        this.model.position.set(this.x, 2.5, 0)
-        this.scene.add(this.sprite, this.model);
+        this.model.position.set(this.x, 0, -this.y);
+        this.scene.add(this.sprite);
+        if(this.elm) this.group.add(this.model);
     }
 
     setRotation(angle){
@@ -38,6 +41,7 @@ class Laser{
         this.x = x;
         this.y = y;
         this.sprite.position.set(this.x, this.y, this.z);
+        if(this.elm) this.model.position.set(this.x, 0, -this.y);
     }
 
     setStartPos(){
