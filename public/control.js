@@ -6,6 +6,8 @@ class InputManager{
         this.camera         = camera;
         this.canvas         = canvas;
         this.controls       = new THREE.OrbitControls(this.camera, this.canvas);
+        this.raycaster      = new THREE.Raycaster();
+        this.mouse          = new THREE.Vector2();
         this.controls.enableDamping = true;
         this.key = {
             'w':'forward',
@@ -14,7 +16,7 @@ class InputManager{
             'd': 'right',
 
             ' ': 'is2D',
-    
+
             'ArrowUp'   : 'forward',
             'ArrowDown' : 'back',
             'ArrowLeft' : 'left',
@@ -37,7 +39,6 @@ class InputManager{
             event.preventDefault();
         }, {passive:false});
 
-                
         document.addEventListener('touchstart', (event)=>{
             this.myInfo.recordStartPoint(event.touches[0].clientX, event.touches[0].clientY);
             event.preventDefault();
@@ -51,7 +52,22 @@ class InputManager{
         document.addEventListener('touchend', (event)=>{
             this.myInfo.command("reset");
             event.preventDefault();
-        }, {passive:false});   
+        }, {passive:false});
+
+        document.addEventListener('mousedown', (event) => {
+            if(this.key[event.key]) this.myInfo.command(this.key[event.key]);
+            event.preventDefault();
+        }, {passive:false});
+
+        document.addEventListener('mousemove', (event) => {
+            if(this.key[event.key]) this.myInfo.command(this.key[event.key]);
+            event.preventDefault();
+        }, {passive:false});
+
+        document.addEventListener('mouseup', (event) => {
+            if(this.key[event.key]) this.myInfo.command(this.key[event.key]);
+            event.preventDefault();
+        }, {passive:false});
     }
 
     update(){

@@ -29,7 +29,7 @@ class Screen{
         this.sprite.scale.set(3, 3, 3);
         this.sprite.rotation.z = 0;
         this.model.position.set(this.x, 0, -this.y);
-        this.scene.add(this.sprite);
+        //this.scene.add(this.sprite);
         if(this.elm) this.group.add(this.model);
     }
 

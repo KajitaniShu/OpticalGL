@@ -12,18 +12,13 @@ class World{
         this.modalManager   = new ModalManager();
         this.myInfo         = new MyInfo(this.socket, this.scene, this.type, this.camera, this.modalManager);
         this.input          = new InputManager(this, this.myInfo, this.camera, this.canvas);
-        const {ambientLight, mainLight} = createLight('white', 'white', 20, 100, 20);
+        const {ambientLight, mainLight} = createLight('white', 'white', 20, 500, 20);
         this.scene.add(ambientLight, mainLight);
         this.context        = canvas.getContext('2d');
         this.count          = 0;
         this.clock          = new THREE.Clock();
         this.opticalEleents = new THREE.Group();
-
-        this.laser          = new Laser(this.socket, this.scene, this.opticalEleents, false);
-        this.lens           = new Lens(this.socket, this.scene, this.opticalEleents, false);
-        this.mirror         = new Mirror(this.socket, this.scene, this.opticalEleents, false);
-        this.screen         = new Screen(this.socket, this.scene, this.opticalEleents, false);
-
+        
         this.laser1          = new Laser(this.socket, this.scene, this.opticalEleents, true);
         this.lens1           = new Lens(this.socket, this.scene, this.opticalEleents, true);
         this.mirror1         = new Mirror(this.socket, this.scene, this.opticalEleents, true);
@@ -34,9 +29,6 @@ class World{
         this.lens1.setPosition(20, 100);
         this.mirror1.setPosition(20, 70);
         this.screen1.setPosition(-40, 70);
-
-
-        this.board2D    = new Board2D(this.scene);
         this.opticalEleents.scale.set(4, 4, 4);
         this.opticalEleents.position.set(40, 8, 400);
         this.scene.add(this.opticalEleents);
@@ -53,7 +45,6 @@ class World{
     }
     
     async init(){
-
     }
 
     Start(){
