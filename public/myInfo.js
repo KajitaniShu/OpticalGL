@@ -7,7 +7,8 @@
 // MyInfoクラス                                           //
 //********************************************************//
 class MyInfo{
-    constructor(socketID, scene, type, camera, modalManager){
+    constructor(world, socketID, scene, type, camera, modalManager){
+        this.world          = world;
         this.id             = socketID;
         this.scene          = scene;
         this.type           = type;
@@ -19,18 +20,17 @@ class MyInfo{
             transparent:true,
             side:THREE.DoubleSide
         });
-        this.playerImage.map.offset.set(0.05, 0.25);
         this.playerImage.map.repeat.x = 0.33;
         this.playerImage.map.repeat.y = 0.25; 
         this.geometry       = new THREE.PlaneGeometry(5, 5, 5);
         this.sprite         = new THREE.Mesh(this.geometry, this.playerImage);
         this.step           = 1;
-        this.offset         = 0.15;
+        this.offset         = 0.02;
         this.x              = 0;
         this.y              = 0;
         this.pos            = null;
-        this.beforeX        = 30;
-        this.beforeY        = 150;
+        this.beforeX        = 0;
+        this.beforeY        = 0;
         this.moveForward    = false;
         this.moveBack       = false;
         this.moveRight      = false;
@@ -40,9 +40,8 @@ class MyInfo{
         this.angle          = 270;
         this.imageType      = 0.0;
         this.is2D           = false;
-    }
-    Start(){
-        
+        this.playerImage.map.offset.set(this.offset, this.imageType);
+        this.changeAngle(this.angle);
         this.scene.add(this.sprite);
     }
 
@@ -135,8 +134,8 @@ class MyInfo{
                 this.moveRight   = false;
                 break;
             case "is2D":
-                this.is2D = !this.is2D;
-                break;
+                this.world.is2D = !this.world.is2D;
+                
         }
     }
 

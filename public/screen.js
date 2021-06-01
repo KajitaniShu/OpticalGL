@@ -38,7 +38,7 @@ class Screen{
         this.model  = await this.loader.load('../public/models/screen.glb');
         this.model.position.set(0, -6.3, 0);
         this.screen.add(this.model);
-        this.screen.position.set(this.x, 3, -this.y);
+        this.screen.position.set(this.x, 2.5, -this.y);
     }
 
     setRotation(angle){

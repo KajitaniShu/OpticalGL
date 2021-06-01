@@ -1,7 +1,7 @@
 
 //********************************************************//
-// Lensクラス                                              // 
-// → レンズを作成し、管理する                                 // 
+// Lensクラス                                             // 
+// → レンズを作成し、管理する                            // 
 //********************************************************//
 class Lens{
     constructor(socket, scene, group, elm){
@@ -34,7 +34,7 @@ class Lens{
 
     async load(){
         this.model  = await this.loader.load('../public/models/lens.glb');
-        this.model.position.set(this.x, -3.5, -this.y);
+        this.model.position.set(this.x, -2.5, -this.y);
         this.group.add(this.model);
     }
 
