@@ -29,6 +29,7 @@ class World{
         this.lens1.setPosition(20, 100);
         this.mirror1.setPosition(20, 70);
         this.screen1.setPosition(-40, 70);
+        this.screen1.setRotation(Math.PI/2);
         this.opticalEleents.scale.set(4, 4, 4);
         this.opticalEleents.position.set(40, 8, 400);
         this.scene.add(this.opticalEleents);
