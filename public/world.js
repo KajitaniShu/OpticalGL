@@ -42,7 +42,7 @@ class World{
         this.screen1.setPosition(-40, -30);
         this.screen1.setRotation(Math.PI/2);
         this.scene3D.add(this.opticalEleents);
-        //////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
 
         // リサイズ
         resize( this.camera3D, this.camera2D, this.renderer, this.is2D);
