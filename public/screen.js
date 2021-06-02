@@ -44,7 +44,7 @@ class Screen{
     setRotation(angle){
         if(this.angle != angle){
             this.angle = angle;
-            this.screen.rotation.set(0, angle, 0);
+            this.screen.rotation.set(0, this.angle, 0);
         }
     }
 

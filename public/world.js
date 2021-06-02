@@ -29,6 +29,7 @@ class World{
         
         // 光学系
         this.opticalEleents = new THREE.Group();
+        this.opticalEleents.scale.set(2, 2, 2);
         this.laser1          = new Laser(this.socket, this.scene, this.opticalEleents, true);
         this.lens1           = new Lens(this.socket, this.scene, this.opticalEleents, true);
         this.mirror1         = new Mirror(this.socket, this.scene, this.opticalEleents, true);
@@ -39,6 +40,7 @@ class World{
         this.laser1.setRotation(Math.PI / 2);
         this.lens1.setPosition(20, 0);
         this.mirror1.setPosition(20, -30);
+        this.mirror1.setRotation(Math.PI/4);
         this.screen1.setPosition(-40, -30);
         this.screen1.setRotation(Math.PI/2);
         this.scene3D.add(this.opticalEleents);
